@@ -1,3 +1,5 @@
+package com.paymentus.jmxRunner;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -12,24 +14,28 @@ import org.junit.jupiter.api.Test;
  *
  * @author Alex Ryzhkov
  */
-public class MainPageTest {
+public class LoadTestItemApp {
 
-	//TODO: get rid of absolute paths
+	/**
+	 * Method runs the JMeter test plan from the Java code
+	 *
+	 * @throws IOException
+	 */
 	@Test
-	public void testMainPageFromGUICreatedPlan() throws IOException {
+	public void testGetMethod() throws IOException {
 		// Engine
 		StandardJMeterEngine jmeter = new StandardJMeterEngine();
 
 		// Initialize Properties, logging, locale, etc.
-		JMeterUtils.loadJMeterProperties("c:\\Users\\oryzhkov\\git\\apache-jmeter-5.0\\apache-jmeter-5.0\\bin\\jmeter.properties");
-		JMeterUtils.setJMeterHome("c:\\Users\\oryzhkov\\git\\apache-jmeter-5.0\\apache-jmeter-5.0\\");
+		JMeterUtils.loadJMeterProperties(getClass().getResource("/config/jmeter.properties").getPath());
+		JMeterUtils.setJMeterHome(getClass().getResource("/config/").getPath());
 		JMeterUtils.initLocale();
 
 		// Initialize JMeter SaveService
 		SaveService.loadProperties();
 
 		// Load existing .jmx Test Plan
-		File in = new File("C:\\Users\\oryzhkov\\git\\jmeterdemo\\src\\test\\resources\\demo.jmx");
+		File in = new File(getClass().getResource("/testPlans/Item_app_sample_test_plan.jmx").getPath());
 		HashTree testPlanTree = SaveService.loadTree(in);
 
 		// Run JMeter Test

@@ -1,4 +1,4 @@
 jmeter.log
 jmeterdemo.iml
 target/
-src/java/test/results/
+src/test/results/
