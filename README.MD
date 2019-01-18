@@ -22,5 +22,20 @@ Result output file: `src/test/results/itemAppResults.jmx`
 Responsible class: `com.paymentus.javaRunner.LoadTestOfItemAppJavaBased` <br>
 Result output file: `src/test/results/javaGeneratedResults.csv` <br>
 
+3. Generation of prettyfied HTML report based on JMX result file <br>
+JMX file by default contains plain text with response results. 
+To convert it something more reasonable you can generate HTML by basic JMeter tools. <br>
+In order to do it you need to have JMeter environment variable set up locally (should be done manually) and have JMeter itself installed. <br>
+To get the HTML with report: <br>
+a. run Step 2 from this manual <br>
+b. run this command in your command prompt open in the project directory: <br>
+`jmeter -g src/test/results/itemAppResults.jmx -o src/test/results/htmlReport/` <br>
+it will use the JMX file generated before and create a report in `src/test/results/htmlReport/` folder
+
+`
+
+
+
+
 
 
